@@ -229,7 +229,7 @@ impl From<KnownEventType> for EventType {
 pub struct Digest {
     method: DigestAlgorithm,
     #[serde(serialize_with = "serialize_as_base64")]
-    digest: Vec<u8>,
+    pub digest: Vec<u8>,
 }
 
 impl Digest {
@@ -334,7 +334,6 @@ impl Default for ParseSettings {
     fn default() -> ParseSettings {
         ParseSettings {
             workaround_string_00af: false,
-
         }
     }
 }
