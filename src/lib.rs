@@ -229,7 +229,7 @@ impl From<KnownEventType> for EventType {
 pub struct Digest {
     method: DigestAlgorithm,
     #[serde(serialize_with = "serialize_as_base64")]
-    pub digest: Vec<u8>,
+    digest: Vec<u8>,
 }
 
 impl Digest {
@@ -241,6 +241,14 @@ impl Digest {
         } else {
             Err(Error::InvalidEventDigest)
         }
+    }
+
+    pub fn digest(&self) -> Vec<u8> {
+        self.digest.clone()
+    }
+
+    pub fn into_digest(self) -> Vec<u8> {
+        self.digest
     }
 }
 
